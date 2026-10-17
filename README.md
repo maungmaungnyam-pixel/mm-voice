@@ -1,17 +1,17 @@
 # MM VOICE
 
-မြန်မာဘာသာသတင်းဖတ်ရှုခြင်း၊ အသံထုတ်ပေးခြင်းနှင့် သတင်း feed လုပ်ဆောင်ချက်များပါဝင်သော Cloudflare Worker app ဖြစ်သည်။ Static files များကို `public/` မှပေးပြီး data ကို Cloudflare D1 (`DB` binding) တွင် သိမ်းဆည်းသည်။
+A Cloudflare Worker app for reading Burmese-language news, generating audio, and providing news feeds. Static files are served from `public/`, and data is stored in Cloudflare D1 through the `DB` binding.
 
-## လိုအပ်ချက်များ
+## Requirements
 
-- Node.js 22 နှင့် npm
-- Local development အတွက် Wrangler CLI (`npx wrangler` ဖြင့် အသုံးပြုနိုင်သည်)
-- Cloudflare account နှင့် D1 database — Cloudflare တွင် ကိုယ်ပိုင် deploy ပြုလုပ်မည့်အခါ
-- Gemini, admin login နှင့် social login တို့အတွက် သက်ဆိုင်ရာ credentials — အသုံးပြုမည့် feature များအလိုက်
+- Node.js 22 and npm
+- Wrangler CLI for local development (available through `npx wrangler`)
+- A Cloudflare account and D1 database if you plan to deploy your own instance to Cloudflare
+- The credentials required for the features you plan to use, such as Gemini, admin login, and social login
 
 ## Local setup
 
-Project root မှ အောက်ပါအတိုင်းလုပ်ပါ။
+Run these commands from the project root:
 
 ```sh
 npm ci
@@ -19,9 +19,9 @@ cp wrangler.example.toml wrangler.toml
 cp .env.example .dev.vars
 ```
 
-`.dev.vars` ကို ကိုယ့် local တန်ဖိုးများဖြင့် ဖြည့်ပါ။ `wrangler.toml` ထဲတွင် `AUTH_PUBLIC_ORIGIN` ကို local origin အဖြစ်ထားပြီး Firebase သုံးမည်ဆိုလျှင် project ID နှင့် feature flags ကို သတ်မှတ်ပါ။ Firebase feature များကို မသုံးပါက sample ထဲက `false` တန်ဖိုးများအတိုင်းထားနိုင်သည်။
+Fill in `.dev.vars` with your local values. In `wrangler.toml`, set `AUTH_PUBLIC_ORIGIN` to your local origin. If you use Firebase, configure the project ID and feature flags; otherwise, you can leave the sample flags set to `false`.
 
-Local D1 schema/migrations ကို အသုံးပြုရန်၊ စမ်းသပ်မှုများနှင့် Worker ကို စတင်ရန်:
+To apply the local D1 schema and migrations, run the tests, and start the Worker:
 
 ```sh
 npx wrangler d1 migrations apply DB --local
@@ -29,39 +29,39 @@ npm test
 npx wrangler dev
 ```
 
-`wrangler.example.toml` ထဲရှိ D1 ID သည် local အသုံးပြုမှုအတွက် နမူနာတန်ဖိုးသာဖြစ်သည်။ ကိုယ်ပိုင် Cloudflare D1 database သို့ deploy မလုပ်မီ ကိုယ်ပိုင် database ID ဖြင့် အစားထိုးပါ။
+The D1 ID in `wrangler.example.toml` is a sample value for local use only. Replace it with your own database ID before deploying to your Cloudflare D1 database.
 
-## Configuration နှင့် secrets
+## Configuration and secrets
 
 ### Local development
 
-`.env.example` သည် ဖြည့်စရာအမည်များကို ပြသသည့် template ဖြစ်သည်။ Cloudflare Worker runtime က `.env` သို့မဟုတ် `.env.example` ကို အလိုအလျောက် မဖတ်ပါ။ Local Wrangler အတွက် `.env.example` ကို `.dev.vars` သို့ကူးပြီး အမှန်တကယ်တန်ဖိုးများကို `.dev.vars` ထဲတွင်သာ ထည့်ပါ။ `.dev.vars` နှင့် `.env` ကို Git ထဲသို့ မထည့်ပါနှင့်။
+`.env.example` is a template that lists the variable names you may need to set. The Cloudflare Worker runtime does not automatically read `.env` or `.env.example`. For local Wrangler development, copy `.env.example` to `.dev.vars` and put actual values only in `.dev.vars`. Do not add `.dev.vars` or `.env` to Git.
 
-| Secret variable | အသုံးပြုပုံ |
+| Secret variable | Purpose |
 | --- | --- |
-| `ADMIN_PASSWORD` | Admin panel ဝင်ရောက်ရန် သီးသန့်၊ ရှည်လျားသော password |
-| `GEMINI_API_KEY` | သတင်း pipeline ၏ Gemini လုပ်ဆောင်ချက်များ |
-| `GEMINI_TTS_API_KEY` | မြန်မာအသံထုတ်ပေးသည့် Gemini TTS လုပ်ဆောင်ချက် |
-| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | Google social login — နှစ်ခုလုံးရှိမှ သက်ဆိုင်ရာ provider ကို အသုံးပြုနိုင်သည် |
-| `FACEBOOK_APP_ID`, `FACEBOOK_APP_SECRET` | Facebook social login — နှစ်ခုလုံးလိုအပ်သည် |
-| `LINE_CHANNEL_ID`, `LINE_CHANNEL_SECRET` | LINE Login — နှစ်ခုလုံးလိုအပ်သည် |
+| `ADMIN_PASSWORD` | A unique, long password for signing in to the admin panel |
+| `GEMINI_API_KEY` | Gemini features in the news pipeline |
+| `GEMINI_TTS_API_KEY` | Gemini TTS for Burmese audio generation |
+| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | Google social login; both values are required to enable the provider |
+| `FACEBOOK_APP_ID`, `FACEBOOK_APP_SECRET` | Facebook social login; both values are required |
+| `LINE_CHANNEL_ID`, `LINE_CHANNEL_SECRET` | LINE Login; both values are required |
 
-Gemini integration မသုံးပါက သက်ဆိုင်ရာ key များကို မဖြည့်နိုင်ပါ။ Social login provider များသည် သက်ဆိုင်ရာ ID နှင့် secret နှစ်ခုလုံးရှိမှသာ ဖွင့်မည်။ API key တစ်ခုကို TTS နှင့် news pipeline နှစ်ခုလုံးအတွက် အသုံးပြုမည်ဆိုလျှင် မိမိ၏ Google/Gemini project ထဲတွင် လိုအပ်သော access ရှိကြောင်း သေချာစေပါ။
+If you do not use the Gemini integration, you can leave its keys unset. A social login provider is enabled only when both its ID and secret are present. If you use one API key for both TTS and the news pipeline, make sure your Google/Gemini project has the required access for both.
 
-### အများမြင်ရသော၊ လျှို့ဝှက်မဟုတ်သည့် settings
+### Public, non-secret settings
 
-အောက်ပါ settings များသည် secret မဟုတ်သော app configuration ဖြစ်ပြီး `wrangler.toml` ၏ `[vars]` ထဲတွင် ထည့်ရသည်။
+The following settings are non-secret app configuration values. Add them under `[vars]` in `wrangler.toml`:
 
-- `AUTH_PUBLIC_ORIGIN` — app အသုံးပြုမည့် local သို့မဟုတ် deployed origin
-- `AUTH_FIREBASE_PROJECT_ID` — Firebase project ID
-- `AUTH_FIREBASE_EMAIL_ENABLED` — Firebase email login ကို ဖွင့်/ပိတ်ရန် (`"true"` သို့မဟုတ် `"false"`)
-- `AUTH_FIREBASE_GOOGLE_ENABLED` — Firebase Google login ကို ဖွင့်/ပိတ်ရန် (`"true"` သို့မဟုတ် `"false"`)
+- `AUTH_PUBLIC_ORIGIN` — the local or deployed origin used by the app
+- `AUTH_FIREBASE_PROJECT_ID` — the Firebase project ID
+- `AUTH_FIREBASE_EMAIL_ENABLED` — enable or disable Firebase email login (`"true"` or `"false"`)
+- `AUTH_FIREBASE_GOOGLE_ENABLED` — enable or disable Firebase Google login (`"true"` or `"false"`)
 
-Google, Facebook, LINE OAuth အတွက် callback URL များကို သက်ဆိုင်ရာ provider developer console တွင် ကိုယ်ပိုင် app origin နှင့် ကိုက်ညီအောင် ပြင်ဆင်ပါ။ Client ID / App ID / Channel ID များသည် API secret မဟုတ်သော်လည်း ဥပမာဖိုင်များတွင် placeholder များသာ အသုံးပြုထားသည်။
+Configure the callback URLs for Google, Facebook, and LINE OAuth in each provider's developer console to match your app's origin. Client IDs, App IDs, and Channel IDs are not API secrets, but the example files use placeholders only.
 
-### Cloudflare Worker secrets နှင့် D1
+### Cloudflare Worker secrets and D1
 
-Cloudflare Worker တွင် `.env` ဖိုင်တင်ထားရုံဖြင့် production runtime က ၎င်းကို အလိုအလျောက် မဖတ်ပါ။ Secret များကို Worker ၏ secret store ထဲသို့ ထည့်ပါ။ `wrangler.toml` ကို ကိုယ်ပိုင် account နှင့် app origin အတွက် ပြင်ဆင်ပြီး အောက်ပါ command တစ်ခုချင်းကို run လုပ်ပါ။ တောင်းလာသည့်အခါ secret တန်ဖိုးကို prompt ထဲတွင် ထည့်ပါ။
+The production Worker runtime does not automatically read an `.env` file uploaded to Cloudflare. Add secrets to the Worker's secret store instead. Configure `wrangler.toml` for your own account and app origin, then run the commands below one at a time. Enter each secret value when prompted.
 
 ```sh
 npx wrangler secret put ADMIN_PASSWORD
@@ -75,29 +75,29 @@ npx wrangler secret put LINE_CHANNEL_ID
 npx wrangler secret put LINE_CHANNEL_SECRET
 ```
 
-အသုံးပြုမည့် feature နှင့် provider အတွက် လိုအပ်သော secret များကိုသာ သတ်မှတ်ပါ။ လျှို့ဝှက်တန်ဖိုးများကို `wrangler.toml`, `wrangler.example.toml`, source code သို့မဟုတ် Git commit ထဲသို့ မထည့်ပါနှင့်။
+Set only the secrets required by the features and providers you intend to use. Never put secret values in `wrangler.toml`, `wrangler.example.toml`, source code, or Git commits.
 
-D1 သည် database password ကို မသုံးပါ။ Worker က `wrangler.toml` ဖိုင်ရှိ `[[d1_databases]]` အောက်တွင် သတ်မှတ်ထားသော `DB` binding မှတစ်ဆင့် ချိတ်ဆက်သည်။ Local database state သည် `.wrangler/` အတွင်းတွင်ရှိပြီး Git မှ လျစ်လျူရှုထားသည်။ Cloudflare တွင် ကိုယ်ပိုင် D1 database ဖန်တီးပြီး Wrangler ပြသသည့် ID ကို `database_id` ထဲသို့ ထည့်ပါ။ ထို့နောက် ကိုယ်ပိုင် database တွင် migrations ကို စစ်ဆေးပြီး အသုံးပြုပါ။
+D1 does not use a database password. The Worker connects through the `DB` binding configured under `[[d1_databases]]` in `wrangler.toml`. Local database state is stored in `.wrangler/`, which Git ignores. Create your own D1 database in Cloudflare and put the ID returned by Wrangler in `database_id`. Then review and apply migrations to your own database.
 
 ```sh
 npx wrangler d1 create mm-voice
-# အထက်ပါ command မှရသော ID ကို wrangler.toml ထဲသို့ ထည့်ပြီးနောက်:
+# Add the ID returned by the command above to wrangler.toml before continuing:
 npx wrangler d1 migrations apply DB --remote
 npx wrangler deploy
 ```
 
-`--remote` သည် Cloudflare D1 ကို ပြောင်းလဲမည်ဖြစ်သောကြောင့် ကိုယ်ပိုင် database ID မှန်ကန်ကြောင်း စစ်ပြီးမှသာ run ပါ။
+The `--remote` command changes Cloudflare D1. Verify that the database ID is correct before running it.
 
-## စမ်းသပ်မှုများ
+## Tests
 
 ```sh
 npm test
 ```
 
-## Git နှင့် လျှို့ဝှက်ချက်များ
+## Git and secrets
 
-`.gitignore` သည် `.env`, `.dev.vars`, `wrangler.toml`, Wrangler local state၊ dependencies နှင့် production verification artifacts များကို ကာကွယ်ထားသည်။ `.env.example` နှင့် `wrangler.example.toml` တွင် placeholder များသာ ပါဝင်သည်။ Initial commit မလုပ်မီ Git ထဲသို့ ထည့်မည့်ဖိုင်များကို စစ်ဆေးပါ။ `.gitignore` သည် ယခင်က commit လုပ်ပြီးသားဖိုင်ကို history ထဲမှ မဖယ်ရှားနိုင်ပါ။ Secret တစ်ခု public Git history ထဲ ရောက်ဖူးပါက ဖိုင်မှဖယ်ရှားရုံမက မူရင်း key/password ကိုလည်း ပြောင်းလဲပါ။
+`.gitignore` excludes `.env`, `.dev.vars`, `wrangler.toml`, Wrangler local state, dependencies, and production verification artifacts. `.env.example` and `wrangler.example.toml` contain placeholders only. Review the files you are about to add to Git before your initial commit. `.gitignore` cannot remove a file that was committed previously from the repository history. If a secret has ever entered public Git history, rotate the original key or password as well as removing the file.
 
 ## Open-source license
 
-ဤ project ကို MIT License အောက်တွင် ဖြန့်ချိထားသည်။ အသေးစိတ်ကို [LICENSE](LICENSE) ဖိုင်တွင် ကြည့်ပါ။
+This project is distributed under the MIT License. See the [LICENSE](LICENSE) file for details.
