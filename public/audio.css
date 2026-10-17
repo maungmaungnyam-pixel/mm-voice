@@ -1,0 +1,49 @@
+.drawer-audio{display:grid;gap:8px;margin:8px 0 10px;padding:12px;border:1px solid #dce7eb;border-radius:16px;background:linear-gradient(135deg,#f1f7f7,#f5f7fc)}
+.drawer-audio h2{margin:0 0 2px;color:#203a50;font-size:13px;font-weight:800;line-height:1.5}
+.drawer-audio-action{display:flex;align-items:center;gap:10px;min-height:48px;padding:9px 11px;border:1px solid #dce7eb;border-radius:12px;color:#203d51;background:#fff;text-align:left;font:700 12px/1.55 Inter,"Noto Sans Myanmar",sans-serif;cursor:pointer}
+.drawer-audio-action svg,.audio-player-icon svg,.audio-icon-button svg,.audio-play-button svg{width:21px;height:21px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.drawer-audio-action:hover{border-color:#2d8069;background:#f4fbf7}
+.audio-player{position:fixed;z-index:22;right:12px;bottom:calc(76px + env(safe-area-inset-bottom));left:12px;width:min(680px,calc(100vw - 24px));margin-inline:auto;padding:12px 14px 11px;border:1px solid #d6e2e6;border-radius:18px;color:#203346;background:#fff;box-shadow:0 8px 28px #152d3b2e;font-family:Inter,"Noto Sans Myanmar",sans-serif}
+.audio-player[hidden]{display:none!important}
+.audio-player-heading{display:flex;align-items:center;gap:10px;min-width:0}
+.audio-player-icon{display:grid;place-items:center;width:38px;height:38px;flex:0 0 38px;border-radius:12px;color:#12614b;background:#e9f5ee}
+.audio-player-copy{display:grid;gap:2px;min-width:0;flex:1}
+.audio-player-region{color:#477062;font-size:10px;font-weight:750;letter-spacing:.03em}
+.audio-player-copy strong{overflow:hidden;color:#1d2f41;font-size:12px;line-height:1.5;text-overflow:ellipsis;white-space:nowrap}
+.audio-player-copy span:last-child{overflow:hidden;color:#5a6c78;font-size:10px;line-height:1.45;text-overflow:ellipsis;white-space:nowrap}
+.audio-player-controls{display:grid;grid-template-columns:44px 48px 44px minmax(70px,1fr);align-items:center;gap:7px;margin-top:8px}
+.audio-icon-button,.audio-play-button{display:grid;place-items:center;min-width:44px;min-height:44px;padding:0;border:1px solid #dce6e9;border-radius:13px;color:#29475a;background:#fff;cursor:pointer}
+.audio-play-button{border-color:#176849;color:#fff;background:#176849}
+.audio-play-button svg{width:23px;height:23px;fill:currentColor;stroke:none}
+.audio-icon-button:disabled,.audio-play-button:disabled{opacity:.48;cursor:not-allowed}
+.audio-volume-row{display:grid;grid-template-columns:44px auto minmax(70px,1fr) 40px;align-items:center;gap:8px;margin-top:7px}
+.audio-volume-row label{color:#526775;font-size:11px;font-weight:700;white-space:nowrap}
+#audio-volume{width:100%;height:24px;margin:0;accent-color:#16734e;cursor:pointer}
+.audio-volume-level{color:#61727c;font-size:10px;font-variant-numeric:tabular-nums;text-align:right}
+.audio-progress-wrap{display:grid;gap:2px;min-width:0;margin-left:3px}
+#audio-progress{width:100%;height:24px;margin:0;accent-color:#16734e;cursor:pointer}
+#audio-progress:disabled{cursor:default;opacity:.65}
+.audio-time-row{display:flex;justify-content:space-between;color:#61727c;font-size:10px;font-variant-numeric:tabular-nums}
+.audio-player button:focus-visible,#audio-progress:focus-visible,#audio-volume:focus-visible,.drawer-audio-action:focus-visible{outline:3px solid #1175bc;outline-offset:2px}
+html[data-theme=dark] .drawer-audio{border-color:#33475e;background:linear-gradient(135deg,#182b3a,#1b263d)}
+html[data-theme=dark] .drawer-audio h2{color:#e7eef6}
+html[data-theme=dark] .drawer-audio-action{border-color:#34475c;color:#e1eaf3;background:#1c2b3f}
+html[data-theme=dark] .drawer-audio-action:hover{border-color:#73c69a;background:#1b3a35}
+html[data-theme=dark] .audio-player{border-color:#3a4b62;color:#e6edf6;background:#152238;box-shadow:0 8px 28px #0006}
+html[data-theme=dark] .audio-player-icon{color:#a2e4b9;background:#203a35}
+html[data-theme=dark] .audio-player-region{color:#a2d3ba}
+html[data-theme=dark] .audio-player-copy strong{color:#edf3fa}
+html[data-theme=dark] .audio-player-copy span:last-child,.audio-time-row{color:#bfccd8}
+html[data-theme=dark] .audio-icon-button{border-color:#3a4b62;color:#dce7f3;background:#1b2a40}
+html[data-theme=dark] .audio-volume-row label,html[data-theme=dark] .audio-volume-level{color:#bfccd8}
+@media(max-width:600px){.audio-player{right:8px;bottom:calc(73px + env(safe-area-inset-bottom));left:8px;width:calc(100vw - 16px);padding:10px 11px;border-radius:16px}.audio-player-copy strong{font-size:11px}.audio-player-copy span:last-child{font-size:9px}.audio-player-controls{grid-template-columns:42px 46px 42px minmax(60px,1fr);gap:5px}.audio-volume-row{grid-template-columns:42px auto minmax(50px,1fr) 36px;gap:6px}.audio-icon-button{min-width:42px;min-height:42px}.audio-play-button{min-width:46px;min-height:46px}}
+@media(prefers-reduced-motion:reduce){.drawer-audio-action,.audio-player button{scroll-behavior:auto;transition:none}}
+
+
+.audio-player-controls.is-quota-unavailable{grid-template-columns:minmax(0,1fr)}
+.audio-player-controls.is-quota-unavailable>:not(#audio-quota-message){display:none!important}
+.audio-player.is-quota-unavailable .audio-volume-row{display:none}
+.audio-quota-message{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;padding:9px 12px;border:1px solid #f1c5c4;border-radius:13px;color:#a52f36;background:linear-gradient(110deg,#fff5f3,#fffafa);text-align:center;font:800 12px/1.6 "Noto Sans Myanmar","Myanmar Text",sans-serif;box-shadow:inset 0 1px 0 #fff}
+.audio-quota-message[hidden]{display:none!important}
+html[data-theme=dark] .audio-quota-message{border-color:#67383e;color:#ffd3d0;background:linear-gradient(110deg,#39262e,#2c2230);box-shadow:none}
+@media(max-width:600px){.audio-quota-message{min-height:42px;padding:8px 9px;font-size:11px}}

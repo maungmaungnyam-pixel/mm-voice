@@ -1,0 +1,39 @@
+{
+  "id": "/",
+  "name": "MM VOICE",
+  "short_name": "MM VOICE",
+  "description": "Myanmar-related news in Burmese, summarized with clear links to original sources.",
+  "lang": "my",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#155cba",
+  "background_color": "#f5f7fa",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

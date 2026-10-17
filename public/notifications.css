@@ -1,0 +1,29 @@
+/* Breaking news and official weather notices */
+.notification-list{display:grid;gap:11px;margin-top:12px}
+.notification-card{display:grid;gap:7px;width:100%;padding:15px 16px;border:1px solid var(--line);border-left:4px solid #bd433b;border-radius:15px;color:var(--ink);background:#fff;text-align:left;cursor:pointer;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+.notification-card:hover{transform:translateY(-1px);border-color:#c8d6e0;box-shadow:0 6px 16px #12324f12}
+.notification-card:focus-visible{outline:3px solid #95c5e6;outline-offset:3px}
+.notification-card-weather{border-left-color:#28769a}
+.notification-kind{justify-self:start;padding:3px 8px;border-radius:999px;color:#9e302b;background:#fff0ee;font-size:10px;font-weight:800}
+.notification-card-weather .notification-kind{color:#1d607e;background:#eaf5fa}
+.notification-title{font-size:14px;font-weight:800;line-height:1.6;overflow-wrap:anywhere}
+.notification-summary{color:#647789;font-size:11px;line-height:1.8;overflow-wrap:anywhere}
+.notification-meta{display:flex;justify-content:space-between;gap:10px;color:#83909c;font-size:9px}
+html[data-theme=dark] .notification-card{border-color:#2b3a53;background:#152238;color:#e7edf6}
+html[data-theme=dark] .notification-kind{color:#ffb5ac;background:#4c292d}
+html[data-theme=dark] .notification-card-weather .notification-kind{color:#9edbf3;background:#1d3a4d}
+html[data-theme=dark] .notification-summary,html[data-theme=dark] .notification-meta{color:#b2bfd0}
+@media(max-width:600px){.notification-card{padding:13px 12px}.notification-title{font-size:12px}.notification-summary{font-size:10px}}
+
+/* Keep every readable label and body copy crisp white in the dark appearance. */
+html[data-theme=dark] body{color:#fff!important}
+html[data-theme=dark] body *{color:#fff!important}
+html[data-theme=dark] body ::placeholder{color:#fff!important;opacity:1}
+
+
+#notification-toggle{position:relative}
+.notification-badge{position:absolute;top:0;right:-1px;display:grid;place-items:center;min-width:18px;height:18px;padding:0 4px;border:2px solid #1a2b49;border-radius:999px;color:#fff;background:linear-gradient(145deg,#ff5a5f,#d51f38);box-shadow:0 2px 7px #82162966;font:800 9px/1 Inter,"Noto Sans Myanmar",sans-serif;letter-spacing:-.02em;transform:translate(22%,-16%);animation:notification-badge-pop .28s cubic-bezier(.2,.8,.2,1) both}
+.notification-badge[hidden]{display:none!important}
+@keyframes notification-badge-pop{0%{opacity:0;transform:translate(22%,-16%) scale(.55)}75%{transform:translate(22%,-16%) scale(1.12)}100%{opacity:1;transform:translate(22%,-16%) scale(1)}}
+html[data-theme=dark] .notification-badge{border-color:#1a2b49;box-shadow:0 2px 8px #0009}
+@media(prefers-reduced-motion:reduce){.notification-badge{animation:none}}

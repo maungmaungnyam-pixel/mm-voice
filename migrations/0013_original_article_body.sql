@@ -1,0 +1,1 @@
+ALTER TABLE posts ADD COLUMN original_body TEXT NOT NULL DEFAULT '';

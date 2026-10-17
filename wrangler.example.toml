@@ -1,0 +1,41 @@
+# Public-safe template. Copy to wrangler.toml and customize for your own account.
+# Do not commit the local wrangler.toml file.
+name = "mm-voice"
+main = "worker.mjs"
+compatibility_date = "2026-06-24"
+workers_dev = true
+
+[vars]
+# Non-secret app configuration. Change this to your local or deployed origin.
+AUTH_PUBLIC_ORIGIN = "http://localhost:8787"
+AUTH_FIREBASE_PROJECT_ID = "replace-with-your-firebase-project-id"
+AUTH_FIREBASE_EMAIL_ENABLED = "false"
+AUTH_FIREBASE_GOOGLE_ENABLED = "false"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = [
+  "/api/*",
+  "/admin",
+  "/admin/*",
+  "/",
+  "/index.html",
+  "/app.js",
+  "/social.css",
+  "/publishers.css",
+  "/sw.js",
+  "/manifest.webmanifest"
+]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "mm-voice"
+# This example UUID is for local Wrangler state only. Replace it with the ID
+# of your own D1 database before applying remote migrations or deploying.
+database_id = "00000000-0000-0000-0000-000000000001"
+migrations_dir = "migrations"
+
+[triggers]
+# Mirrors the app's current scheduled trigger. Adjust to your own operational needs.
+crons = ["* * * * *"]

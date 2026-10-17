@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#14324b">
+<title>MM VOICE Admin</title>
+<style>
+:root{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:#18344e;background:#f3f6f7;font-synthesis:none;--navy:#14324b;--teal:#147b73;--gold:#d6ad57;--muted:#70818c;--line:#e2eaed;--card:#fff}*{box-sizing:border-box}body{margin:0}.shell{max-width:1160px;margin:auto;padding:24px 18px 56px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:23px}.brand{display:flex;align-items:center;gap:11px;color:var(--navy);font-weight:850;letter-spacing:-.035em;text-decoration:none}.brand-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:var(--navy);color:#fff;font-size:14px;letter-spacing:-.04em}.brand-copy{display:grid;gap:2px;font-size:20px}.brand-copy small{font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.1em;text-transform:uppercase}.top-actions{display:flex;align-items:center;gap:9px}.top-actions a,.top-actions button{border:1px solid var(--line);background:#fff;color:#315a70;text-decoration:none;border-radius:10px;padding:10px 13px;font:inherit;font-size:12px;font-weight:750;cursor:pointer}.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:20px;box-shadow:0 8px 30px #18344e08}.hidden{display:none!important}.login-card{max-width:460px;margin:9vh auto}.login-card h1,.heading h1{margin:0 0 7px;font-size:25px;letter-spacing:-.035em;color:var(--navy)}h2{margin:0;font-size:17px;color:var(--navy)}h3{margin:0;color:var(--navy);font-size:14px}.muted{color:var(--muted);font-size:12px;line-height:1.7}.login-card .muted{margin:0 0 20px}.heading{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin:0 0 19px}.heading p{margin:0}.heading .button{flex:none}.button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;border:0;border-radius:10px;padding:9px 14px;background:var(--teal);color:#fff;font:inherit;font-size:12px;font-weight:780;cursor:pointer}.button.secondary{background:#eaf2f4;color:#315e73}.button.danger{background:#fff0ed;color:#a34337}.button:disabled{opacity:.55;cursor:wait}.label{display:grid;gap:7px;margin:0 0 13px;font-size:12px;font-weight:750;color:#334f61}input,select,textarea{width:100%;border:1px solid #d5e0e4;border-radius:10px;background:#fff;padding:11px 12px;font:inherit;font-size:13px;color:#18344e}textarea{min-height:150px;resize:vertical}input:focus,select:focus,textarea:focus{outline:3px solid #5b9db522;border-color:#5b9db5}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}.wide{grid-column:1/-1}.buttons{display:flex;flex-wrap:wrap;gap:9px;margin-top:8px}.notice{min-height:18px;margin:8px 0 0;color:#556e7b;font-size:12px}.notice.error{color:#a9332b}.notice.success{color:#147649}.stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:14px}.metric{min-width:0;padding:15px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,#fff,#f9fbfb)}.metric span{display:block;color:var(--muted);font-size:10px;font-weight:750;line-height:1.45}.metric strong{display:block;margin-top:6px;color:var(--navy);font-size:27px;line-height:1.1}.metric small{display:block;margin-top:6px;color:#87959e;font-size:10px;line-height:1.45}.privacy-note{margin:0 0 18px;padding:12px 14px;border:1px solid #d7e9e4;border-radius:12px;background:#f5fbf8;color:#486b63;font-size:11px;line-height:1.7}.analytics-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:19px}.panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:14px}.panel-head p{margin:5px 0 0}.trend{display:grid;gap:7px}.trend-row{display:grid;grid-template-columns:86px minmax(70px,1fr) 56px 58px;align-items:center;gap:9px;color:#607581;font-size:10px}.trend-date{white-space:nowrap}.bar-track{height:9px;border-radius:999px;background:#edf2f3;overflow:hidden}.bar-fill{height:100%;min-width:0;border-radius:999px;background:linear-gradient(90deg,#16867c,#65b49e)}.trend-num{text-align:right;font-variant-numeric:tabular-nums}.trend-legend{display:flex;justify-content:flex-end;gap:12px;margin:-5px 0 7px;color:#85929a;font-size:9px}.trend-legend span{display:flex;align-items:center;gap:4px}.legend-dot{width:7px;height:7px;border-radius:50%;background:#16867c}.legend-dot.gold{background:var(--gold)}.data-table{width:100%;border-collapse:collapse;min-width:440px}.data-table th,.data-table td{padding:9px 8px;border-bottom:1px solid #edf1f2;text-align:left;font-size:10px;vertical-align:top}.data-table th{color:#778994;font-size:9px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}.data-table td.num,.data-table th.num{text-align:right;font-variant-numeric:tabular-nums}.table-wrap{overflow:auto}.anon-id{font-weight:800;color:#315f72;white-space:nowrap}.subline{display:block;margin-top:3px;color:#87959e;font-size:9px}.empty{padding:15px 5px;color:#87959e;font-size:11px}.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 12px}.editor{margin-bottom:18px}.toggle{display:flex;align-items:flex-start;gap:10px;margin:2px 0 12px;padding:11px;border:1px solid var(--line);border-radius:11px;background:#f8fbfb}.toggle input{width:17px;height:17px;margin:1px 0 0;accent-color:var(--teal)}.toggle strong{display:block;font-size:11px}.toggle small{display:block;margin-top:3px;color:var(--muted);font-size:10px;line-height:1.5}.post-list{display:grid;gap:9px}.post-row{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;padding:13px;border:1px solid #e4ebed;border-radius:12px}.post-copy{min-width:0}.post-copy strong{display:block;margin-bottom:4px;font-size:13px;overflow-wrap:anywhere}.post-copy small{display:block;color:#70818c;font-size:10px;line-height:1.6}.post-actions{display:flex;gap:7px;flex:none}.post-actions .button{min-height:34px;padding:7px 10px;font-size:10px}.preview{margin-top:13px;padding:15px;border:1px dashed #9eb8c3;border-radius:13px;background:#f8fbfb}.preview h3{margin:0 0 7px}.preview img{width:min(100%,420px);max-height:220px;object-fit:cover;border-radius:10px;margin:0 0 9px}.badge{display:inline-flex;margin:7px 5px 0 0;padding:3px 7px;border-radius:999px;background:#edf6f2;color:#187451;font-size:9px;font-weight:750}.badge.warn{background:#fff1e8;color:#a94532}.section-gap{margin-top:18px}.field-help{margin:-6px 0 10px;color:#80909a;font-size:10px;line-height:1.55}.small{font-size:10px}@media(max-width:900px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.analytics-grid{grid-template-columns:1fr}}@media(max-width:620px){.shell{padding:15px 11px 38px}.card{padding:15px}.topbar{align-items:flex-start}.top-actions a,.top-actions button{padding:9px 10px;font-size:10px}.brand-copy{font-size:17px}.heading{align-items:flex-start;flex-direction:column}.heading .button{align-self:flex-start}.stats{grid-template-columns:1fr 1fr}.metric strong{font-size:23px}.form-grid{grid-template-columns:1fr}.wide{grid-column:auto}.post-row{flex-direction:column}.trend-row{grid-template-columns:72px minmax(50px,1fr) 42px 44px;gap:6px;font-size:9px}}
+</style>
+<style>
+.source-status{display:inline-flex;margin:7px 5px 0 0;padding:3px 7px;border-radius:999px;background:#eaf6ef;color:#187451;font-size:9px;font-weight:750}.source-status.paused{background:#f1f3f4;color:#6c7981}.source-link{display:block;max-width:620px;margin-top:4px;color:#437c88;font-size:10px;overflow-wrap:anywhere}.source-help{margin:0 0 14px;padding:11px 13px;border:1px solid #d7e9e4;border-radius:11px;background:#f5fbf8;color:#486b63;font-size:11px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="MM VOICE Admin home"><span class="brand-mark">MV</span><span class="brand-copy">MM VOICE<small>Admin dashboard</small></span></a>
+    <div class="top-actions"><a href="/" target="_blank" rel="noopener">Open app ↗</a><button id="logout" class="hidden" type="button">Sign out</button></div>
+  </header>
+
+  <section id="login-card" class="card login-card">
+    <h1>Admin sign in</h1>
+    <p class="muted">Manage MM VOICE posts and view anonymous usage trends. Visitor metrics never include real names or email addresses.</p>
+    <form id="login-form"><label class="label">Admin password<input id="admin-password" type="password" autocomplete="current-password" required></label><button class="button" type="submit">Sign in</button><p id="login-notice" class="notice" role="status"></p></form>
+  </section>
+
+  <main id="dashboard" class="hidden">
+    <div class="heading"><div><h1>Overview</h1><p id="dashboard-date" class="muted">Activity is grouped by Myanmar local date.</p></div><button id="refresh-all" class="button secondary" type="button">Refresh dashboard</button></div>
+    <section class="stats" aria-label="Activity summary">
+      <article class="metric"><span>Active browsers today</span><strong id="metric-active">—</strong><small>One anonymous browser per day</small></article>
+      <article class="metric"><span>Visits today</span><strong id="metric-today">—</strong><small>Sessions separated by 30 minutes</small></article>
+      <article class="metric"><span>All-time visits</span><strong id="metric-total">—</strong><small>Recorded since analytics began</small></article>
+      <article class="metric"><span>Returning browsers · 30 days</span><strong id="metric-returning">—</strong><small>Active on 2+ different days</small></article>
+      <article class="metric"><span>Engaged browsers · 30 days</span><strong id="metric-engaged">—</strong><small>Repeated visits, reads or interactions</small></article>
+    </section>
+    <p class="privacy-note"><strong>Privacy note:</strong> MM VOICE has no sign-in for readers, so these are estimates of browsers, not identified people. A one-way hash is used for a short anonymous ID; no names, emails, or IP addresses are stored in analytics. Clearing browser storage or changing devices can make the same person appear as a new browser.</p>
+
+    <div class="analytics-grid">
+      <section class="card"><div class="panel-head"><div><h2>Recent activity</h2><p class="muted">Daily visits and active browsers · Myanmar time</p></div></div><div class="trend-legend"><span><i class="legend-dot"></i> Visits</span><span><i class="legend-dot gold"></i> Active browsers</span></div><div id="analytics-trend" class="trend" aria-live="polite"></div><p id="analytics-notice" class="notice" role="status"></p></section>
+      <section class="card"><div class="panel-head"><div><h2>Most-read posts</h2><p class="muted">Views, likes, and comments from the live app</p></div></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Post</th><th class="num">Views</th><th class="num">Likes</th><th class="num">Comments</th></tr></thead><tbody id="top-posts"></tbody></table></div><p id="top-posts-empty" class="empty hidden">No post activity yet.</p></section>
+      <section class="card" style="grid-column:1/-1"><div class="panel-head"><div><h2>Regular anonymous browsers</h2><p class="muted">Top active browser IDs over the last 30 days. IDs are pseudonymous and cannot identify a real person.</p></div></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Anonymous ID</th><th class="num">Visits</th><th class="num">Active days</th><th class="num">Post views</th><th class="num">Likes</th><th class="num">Comments</th><th>Last seen</th></tr></thead><tbody id="top-visitors"></tbody></table></div><p id="top-visitors-empty" class="empty hidden">No anonymous activity recorded yet.</p></section>
+    </div>
+
+    <section class="card section-gap" aria-labelledby="sources-heading">
+      <div class="section-title"><div><h2 id="sources-heading">Myanmar news sources</h2><p class="muted" style="margin:5px 0 0">Choose which publishers MM VOICE follows.</p></div><button id="refresh-sources" class="button secondary" type="button">Refresh sources</button></div>
+      <p class="source-help">Removing a source pauses its RSS feed and hides its stories from the app. Stories are kept in the database; restore the source to show them again. Add Myanmar-focused publishers only.</p>
+      <form id="source-form"><div class="form-grid">
+        <label class="label">Publisher name<input name="sourceName" maxlength="120" required placeholder="e.g. Myanmar news outlet"></label>
+        <label class="label">HTTPS RSS feed URL<input name="feedUrl" type="url" maxlength="2000" required placeholder="https://example.org/rss.xml"></label>
+        <label class="label wide">Article domains (optional)<input name="allowedHosts" maxlength="1000" placeholder="example.org, news.example.org"><small class="small muted">Comma-separated domains used by article links. The RSS host is included automatically.</small></label>
+      </div><div class="buttons"><button id="add-source" class="button" type="submit">Add news source</button></div><p id="source-form-notice" class="notice" role="status"></p></form>
+      <div id="source-list" class="post-list" aria-live="polite"></div><p id="source-notice" class="notice" role="status"></p>
+    </section>
+
+    <section class="card editor">
+      <div class="section-title"><div><h2 id="form-title">Create a post</h2><p class="muted" style="margin:5px 0 0">Published posts appear in the live MM VOICE news feed.</p></div></div>
+      <form id="post-form"><div class="form-grid">
+        <label class="label wide">Title<input name="title" maxlength="180" required></label>
+        <label class="label">Category<input name="category" maxlength="80" placeholder="Community, education, visa…"></label>
+        <label class="label">Publisher<select name="sourceName"><option>MM VOICE Admin</option></select></label>
+        <label class="label">Cover image URL<input name="imageUrl" maxlength="250000" placeholder="https://…"></label>
+        <label class="label">Upload image<input name="imageFile" type="file" accept="image/*"><small class="small muted">Compressed in your browser before saving.</small></label>
+        <label class="label wide">Source link (optional)<input name="sourceUrl" type="url" maxlength="2000" placeholder="https://…"></label>
+        <label class="label wide">Post content<textarea name="body" maxlength="30000" required></textarea></label>
+      </div>
+      <p class="field-help">Use “MM VOICE Admin” for an original editorial post. Choose a publisher only when the post is attributable to that source.</p>
+      <label class="toggle"><input name="isScamAlert" type="checkbox"><span><strong>Show a safety warning</strong><small>Use only for a relevant, checked safety alert.</small></span></label>
+      <div class="buttons"><button class="button secondary" type="button" id="preview-button">Preview</button><button class="button" type="submit" id="publish-button">Publish post</button><button class="button secondary hidden" type="button" id="cancel-edit">Cancel edit</button></div>
+      <p id="form-notice" class="notice" role="status"></p><div id="preview-box" class="preview hidden"></div></form>
+    </section>
+
+    <section class="card section-gap"><div class="section-title"><div><h2>Manage posts</h2><p class="muted" style="margin:5px 0 0">Edit or remove MM VOICE stories. Deleting a source story prevents its next automatic re-import.</p></div><button id="refresh-posts" class="button secondary" type="button">Refresh list</button></div><div id="post-list" class="post-list" aria-live="polite"></div><p id="list-notice" class="notice" role="status"></p></section>
+  </main>
+</div>
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const loginCard = $('login-card'), dashboard = $('dashboard'), loginForm = $('login-form');
+  const loginNotice = $('login-notice'), postList = $('post-list'), listNotice = $('list-notice');
+  let editingId = null;
+  const number = (value) => new Intl.NumberFormat().format(Number(value) || 0);
+  function notice(el, text, error = false, success = false) { el.textContent = text; el.className = 'notice' + (error ? ' error' : '') + (success ? ' success' : ''); }
+  async function api(path, options = {}) {
+    const response = await fetch(path, {credentials:'same-origin', cache:'no-store', ...options, headers:{...(options.body ? {'content-type':'application/json'} : {}), ...(options.headers || {})}});
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok || !data.ok) throw new Error(data.error || 'Request failed');
+    return data;
+  }
+  function dateLabel(value, time = false) {
+    if (!value) return '—';
+    try { return new Intl.DateTimeFormat(undefined, {timeZone:'Asia/Yangon', dateStyle:'medium', ...(time ? {timeStyle:'short'} : {})}).format(new Date(value)); }
+    catch { return value; }
+  }
+  function formValue(form, name) { return String(new FormData(form).get(name) || '').trim(); }
+  function enterDashboard() {
+    loginCard.classList.add('hidden'); dashboard.classList.remove('hidden'); $('logout').classList.remove('hidden');
+    refreshDashboard();
+  }
+  loginForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); notice(loginNotice, 'Signing in…');
+    try { await api('/api/admin/session', {method:'POST', body:JSON.stringify({password:$('admin-password').value})}); $('admin-password').value=''; enterDashboard(); }
+    catch (error) {
+      const message = error.message === 'admin_not_configured' ? 'Admin password is not configured for this Worker.' : error.message === 'invalid_password' ? 'Incorrect password.' : 'Unable to sign in. Check the password and try again.';
+      notice(loginNotice, message, true);
+    }
+  });
+  $('logout').addEventListener('click', async () => {
+    try { await api('/api/admin/session', {method:'DELETE'}); } catch {}
+    dashboard.classList.add('hidden'); loginCard.classList.remove('hidden'); $('logout').classList.add('hidden');
+  });
+  async function refreshDashboard() {
+    await Promise.all([loadAnalytics(), loadPosts(), loadSources()]);
+  }
+  function renderTrend(rows) {
+    const root = $('analytics-trend'); root.replaceChildren();
+    if (!rows?.length) { const p=document.createElement('p'); p.className='empty'; p.textContent='No activity recorded yet.'; root.append(p); return; }
+    const max = Math.max(1, ...rows.map((row) => Number(row.visits) || 0));
+    [...rows].reverse().forEach((row) => {
+      const line=document.createElement('div'); line.className='trend-row';
+      const day=document.createElement('span'); day.className='trend-date'; day.textContent=dateLabel(`${row.day}T12:00:00Z`);
+      const track=document.createElement('div'); track.className='bar-track'; track.setAttribute('aria-label', `${number(row.visits)} visits`);
+      const fill=document.createElement('div'); fill.className='bar-fill'; fill.style.width=`${Math.max(0, Math.min(100, (Number(row.visits)||0)/max*100))}%`; track.append(fill);
+      const visits=document.createElement('span'); visits.className='trend-num'; visits.textContent=number(row.visits);
+      const active=document.createElement('span'); active.className='trend-num'; active.style.color='#b28c3d'; active.textContent=number(row.dailyActiveUsers);
+      line.append(day,track,visits,active); root.append(line);
+    });
+  }
+  function renderTopPosts(items) {
+    const body=$('top-posts'); body.replaceChildren(); $('top-posts-empty').classList.toggle('hidden', Boolean(items?.length));
+    for (const item of items || []) {
+      const row=document.createElement('tr');
+      const title=document.createElement('td'); title.textContent=item.title || '(Untitled)';
+      for (const value of [item.views,item.likes,item.comments]) { const cell=document.createElement('td'); cell.className='num'; cell.textContent=number(value); row.append(cell); }
+      row.prepend(title); body.append(row);
+    }
+  }
+  function renderTopVisitors(items) {
+    const body=$('top-visitors'); body.replaceChildren(); $('top-visitors-empty').classList.toggle('hidden', Boolean(items?.length));
+    for (const item of items || []) {
+      const row=document.createElement('tr');
+      const id=document.createElement('td'); id.className='anon-id'; id.textContent=`Anon · ${item.id || 'unknown'}`;
+      const first=document.createElement('small'); first.className='subline'; first.textContent=`First seen ${dateLabel(item.firstSeenAt)}`; id.append(first);
+      row.append(id);
+      for (const value of [item.visits,item.activeDays,item.postViews,item.likes,item.comments]) { const cell=document.createElement('td'); cell.className='num'; cell.textContent=number(value); row.append(cell); }
+      const last=document.createElement('td'); last.textContent=dateLabel(item.lastSeenAt, true); row.append(last); body.append(row);
+    }
+  }
+  async function loadAnalytics() {
+    notice($('analytics-notice'), 'Loading…');
+    try {
+      const data=await api('/api/admin/analytics');
+      $('metric-active').textContent=number(data.dailyActiveUsers); $('metric-today').textContent=number(data.todayVisits);
+      $('metric-total').textContent=number(data.totalVisits); $('metric-total').nextElementSibling.textContent=`${number(data.totalVisitors)} unique anonymous browsers tracked`; $('metric-returning').textContent=number(data.returningVisitors30d);
+      $('metric-engaged').textContent=number(data.engagedVisitors30d); $('dashboard-date').textContent=`Activity grouped by Myanmar local date · ${data.day || ''}`;
+      renderTrend(data.recent); renderTopPosts(data.topPosts); renderTopVisitors(data.topVisitors);
+      notice($('analytics-notice'), `Updated ${new Date().toLocaleTimeString()}.`, false, true);
+    } catch (error) {
+      notice($('analytics-notice'), error.message === 'admin_auth_required' ? 'Session expired. Sign in again.' : 'Analytics are unavailable. Check the database migration and try again.', true);
+    }
+  }
+  function renderSources(items) {
+    const root=$('source-list'); root.replaceChildren();
+    const publisher=$('post-form').elements.sourceName, selected=publisher.value;
+    publisher.replaceChildren();
+    const adminOption=document.createElement('option'); adminOption.value='MM VOICE Admin'; adminOption.textContent='MM VOICE Admin'; publisher.append(adminOption);
+    for(const source of items || []) if(source.enabled){const option=document.createElement('option');option.value=source.sourceName;option.textContent=source.sourceName;publisher.append(option);}
+    if([...publisher.options].some((option)=>option.value===selected)) publisher.value=selected;
+    if(!items?.length){notice($('source-notice'),'No sources configured yet.');return;}
+    notice($('source-notice'),`${items.filter((source)=>source.enabled).length} active of ${items.length} news sources.`,false,true);
+    for(const source of items){
+      const row=document.createElement('article');row.className='post-row';const copy=document.createElement('div');copy.className='post-copy';
+      const title=document.createElement('strong');title.textContent=source.sourceName;
+      const meta=document.createElement('small');meta.textContent=`${number(source.storyCount)} stored stories · ${source.lastStatus==='error'?'Last sync failed':source.lastCheckedAt?`Last checked ${dateLabel(source.lastCheckedAt,true)}`:'Not checked yet'} · ${number(source.itemsSeen)} items last seen`;
+      const badge=document.createElement('span');badge.className='source-status'+(source.enabled?'':' paused');badge.textContent=source.enabled?'Active':'Paused';
+      const link=document.createElement('a');link.className='source-link';link.href=source.feedUrl;link.target='_blank';link.rel='noopener noreferrer';link.textContent=source.feedUrl;
+      copy.append(title,meta,badge,link);
+      if(source.lastError){const error=document.createElement('small');error.textContent=`Last sync note: ${source.lastError}`;copy.append(error);}
+      const actions=document.createElement('div');actions.className='post-actions';const toggle=document.createElement('button');toggle.type='button';toggle.className=source.enabled?'button danger':'button secondary';toggle.textContent=source.enabled?'Remove':'Restore';
+      toggle.addEventListener('click',async()=>{toggle.disabled=true;try{await api(`/api/admin/news/sources/${encodeURIComponent(source.sourceName)}`,{method:'PUT',body:JSON.stringify({enabled:!source.enabled})});await Promise.all([loadSources(),loadPosts(),loadAnalytics()]);}catch(error){toggle.disabled=false;notice($('source-notice'),error.message==='admin_auth_required'?'Session expired. Sign in again.':'Could not update this source.',true);}});
+      actions.append(toggle);row.append(copy,actions);root.append(row);
+    }
+  }
+  async function loadSources() {
+    $('source-list').replaceChildren();notice($('source-notice'),'Loading news sources…');
+    try{const data=await api('/api/admin/news/sources');renderSources(data.items||[]);}
+    catch(error){notice($('source-notice'),error.message==='admin_auth_required'?'Session expired. Sign in again.':'Could not load news sources. Check the database migration.',true);}
+  }
+  $('source-form').addEventListener('submit',async(event)=>{
+    event.preventDefault();const form=event.currentTarget;const payload={sourceName:formValue(form,'sourceName'),feedUrl:formValue(form,'feedUrl'),allowedHosts:formValue(form,'allowedHosts')};
+    notice($('source-form-notice'),'Adding news source…');$('add-source').disabled=true;
+    try{await api('/api/admin/news/sources',{method:'POST',body:JSON.stringify(payload)});form.reset();notice($('source-form-notice'),'News source added and enabled.',false,true);await Promise.all([loadSources(),loadPosts()]);}
+    catch(error){const message=error.message==='invalid_news_source'?'Enter a publisher name, an HTTPS RSS URL, and valid article domains.':error.message==='news_source_already_exists'?'That publisher name or RSS feed is already configured.':'Could not add this news source.';notice($('source-form-notice'),message,true);}
+    finally{$('add-source').disabled=false;}
+  });
+  async function compressImage(file) {
+    if (!file) return '';
+    if (file.size > 12*1024*1024) throw new Error('Choose an image smaller than 12 MB.');
+    const dataUrl=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onerror=()=>reject(new Error('Could not read image.'));reader.onload=()=>resolve(String(reader.result));reader.readAsDataURL(file);});
+    const image=await new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>resolve(img);img.onerror=()=>reject(new Error('Unsupported image.'));img.src=dataUrl;});
+    let width=Math.min(image.naturalWidth,1200),height=Math.round(image.naturalHeight*width/image.naturalWidth); const canvas=document.createElement('canvas');
+    for(let pass=0;pass<4;pass++){canvas.width=width;canvas.height=height;const ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,width,height);ctx.drawImage(image,0,0,width,height);const output=canvas.toDataURL('image/jpeg',Math.max(.48,.78-pass*.1));if(output.length<=240000)return output;width=Math.round(width*.78);height=Math.round(height*.78);}
+    throw new Error('Image is too detailed. Choose a smaller file or paste an HTTPS image URL.');
+  }
+  $('post-form').elements.imageFile.addEventListener('change', async (event) => {
+    const file=event.currentTarget.files?.[0]; if(!file)return; notice($('form-notice'),'Compressing image…');
+    try { $('post-form').elements.imageUrl.value=await compressImage(file); notice($('form-notice'),'Image ready.',false,true); }
+    catch(error) { event.currentTarget.value=''; notice($('form-notice'),error.message,true); }
+  });
+  function showPreview() {
+    const form=$('post-form'), box=$('preview-box'); box.replaceChildren();
+    const title=document.createElement('h3'); title.textContent=formValue(form,'title') || '(Untitled post)'; box.append(title);
+    const imageUrl=formValue(form,'imageUrl');
+    if(imageUrl && (/^https:\/\//i.test(imageUrl) || /^data:image\/(?:jpeg|png|webp);base64,/i.test(imageUrl))){const img=document.createElement('img');img.src=imageUrl;img.alt='Cover preview';img.onerror=()=>img.remove();box.append(img);}
+    const meta=document.createElement('p');meta.className='muted';meta.textContent=`${formValue(form,'category') || 'General'} · ${formValue(form,'sourceName') || 'MM VOICE Admin'}`;box.append(meta);
+    const body=document.createElement('p');body.textContent=formValue(form,'body') || '(No content yet)';body.style.whiteSpace='pre-wrap';box.append(body);box.classList.remove('hidden');
+  }
+  $('preview-button').addEventListener('click', showPreview);
+  function resetForm() { const form=$('post-form'); form.reset(); editingId=null; $('form-title').textContent='Create a post'; $('publish-button').textContent='Publish post'; $('cancel-edit').classList.add('hidden'); $('preview-box').classList.add('hidden'); notice($('form-notice'),''); }
+  $('cancel-edit').addEventListener('click', resetForm);
+  function editPost(post) {
+    const form=$('post-form');
+    for(const key of ['title','category','sourceName','sourceUrl','imageUrl','body']) if(form.elements[key]) form.elements[key].value=post[key] || (key==='sourceName'?'MM VOICE Admin':'');
+    form.elements.isScamAlert.checked=Boolean(post.isScamAlert); editingId=post.id;
+    $('form-title').textContent='Edit post'; $('publish-button').textContent='Save changes'; $('cancel-edit').classList.remove('hidden');
+    window.scrollTo({top:0,behavior:'smooth'}); showPreview();
+  }
+  $('post-form').addEventListener('submit', async (event) => {
+    event.preventDefault(); const form=event.currentTarget;
+    const payload={type:'news',title:formValue(form,'title'),category:formValue(form,'category'),sourceName:formValue(form,'sourceName') || 'MM VOICE Admin',sourceUrl:formValue(form,'sourceUrl'),imageUrl:formValue(form,'imageUrl'),body:formValue(form,'body'),isScamAlert:form.elements.isScamAlert.checked};
+    notice($('form-notice'), editingId?'Saving changes…':'Publishing…'); $('publish-button').disabled=true;
+    try { await api(editingId?`/api/admin/posts/${encodeURIComponent(editingId)}`:'/api/admin/posts',{method:editingId?'PUT':'POST',body:JSON.stringify(payload)}); notice($('form-notice'),editingId?'Changes saved.':'Post published.',false,true); resetForm(); await loadPosts(); }
+    catch(error) { notice($('form-notice'), error.message==='admin_auth_required'?'Session expired. Sign in again.':'Could not save this post. Check the title, publisher, and links.',true); }
+    finally { $('publish-button').disabled=false; }
+  });
+  async function loadPosts() {
+    postList.replaceChildren(); notice(listNotice,'Loading posts…');
+    try {
+      const data=await api('/api/admin/posts');
+      if(!data.items?.length){notice(listNotice,'No posts yet.');return;} notice(listNotice,'');
+      for(const post of data.items){
+        const row=document.createElement('article');row.className='post-row';const copy=document.createElement('div');copy.className='post-copy';
+        const title=document.createElement('strong');title.textContent=post.title;const meta=document.createElement('small');meta.textContent=`${post.sourceName || 'MM VOICE Admin'} · ${post.category || 'General'} · ${dateLabel(post.createdAt)}`;
+        const detail=document.createElement('small');detail.textContent=(post.body||'').slice(0,180);copy.append(title,meta,detail);
+        if(post.isScamAlert){const badge=document.createElement('span');badge.className='badge warn';badge.textContent='Safety warning';copy.append(badge);}
+        const stats=document.createElement('small');stats.textContent=`${number(post.viewCount)} views`;copy.append(stats);
+        const actions=document.createElement('div');actions.className='post-actions';const edit=document.createElement('button');edit.type='button';edit.className='button secondary';edit.textContent='Edit';edit.addEventListener('click',()=>editPost(post));
+        const del=document.createElement('button');del.type='button';del.className='button danger';del.textContent='Delete';del.addEventListener('click',async()=>{if(!confirm(`Delete “${post.title}”? This cannot be undone.`))return;del.disabled=true;try{await api(`/api/admin/posts/${encodeURIComponent(post.id)}`,{method:'DELETE'});await loadPosts();}catch(error){del.disabled=false;notice(listNotice,error.message==='admin_auth_required'?'Session expired. Sign in again.':'Could not delete this post.',true);}});
+        actions.append(edit,del);row.append(copy,actions);postList.append(row);
+      }
+    } catch(error) { notice(listNotice,error.message==='admin_auth_required'?'Session expired. Sign in again.':'Could not load posts. Check the database setup.',true); }
+  }
+  $('refresh-all').addEventListener('click',refreshDashboard); $('refresh-posts').addEventListener('click',loadPosts); $('refresh-sources').addEventListener('click',loadSources);
+  api('/api/admin/posts').then(enterDashboard).catch(()=>{});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#155cba">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MM VOICE">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png">
+  <meta name="description" content="Myanmar-related news in Burmese, summarized with clear links to original sources.">
+  <title>MM VOICE — Myanmar news in Burmese</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Myanmar:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/app.css?v=20261016-welcome-network-r1">
+  <link rel="stylesheet" href="/social.css?v=20261016-welcome-network-r1">
+  <link rel="stylesheet" href="/notifications.css?v=20261016-alert-badge-r2">
+  <link rel="stylesheet" href="/publishers.css?v=20261016-publisher-logos-r5">
+  <link rel="stylesheet" href="/audio.css?v=20261016-audio-quota-r2">
+</head>
+<body>
+  <div class="app" id="app">
+    <header class="masthead" id="site-header">
+      <div class="brand-row">
+        <button id="drawer-toggle" class="top-icon-button menu-toggle" type="button" aria-label="မီနူးဖွင့်ရန်" data-i18n-aria-label="openMenuLabel" aria-expanded="false" aria-controls="app-drawer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/></svg>
+        </button>
+        <span class="brand-mark brand-mark-static" aria-hidden="true"><svg viewBox="0 0 36 36"><rect class="brand-wave-bar" x="3" y="14" width="4" height="8" rx="2"/><rect class="brand-wave-bar" x="9" y="9" width="4" height="18" rx="2"/><rect class="brand-wave-bar" x="15" y="4" width="4" height="28" rx="2"/><rect class="brand-wave-bar" x="21" y="10" width="4" height="16" rx="2"/><rect class="brand-wave-bar" x="27" y="14" width="4" height="8" rx="2"/></svg></span>
+        <button id="brand-refresh" class="brand" type="button" aria-label="Go to Burma feed and refresh" data-i18n-aria-label="refreshAppLabel">MM VOICE</button>
+        <div class="top-actions">
+          <button id="search-toggle" class="top-icon-button" type="button" aria-label="Search" aria-expanded="false" aria-controls="search-panel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10.8" cy="10.8" r="7.2"/><path d="m16 16 4.5 4.5" stroke-linecap="round"/></svg>
+          </button>
+          <button id="notification-toggle" class="top-icon-button" type="button" aria-label="Notifications" data-i18n-aria-label="notifications">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><span id="notification-badge" class="notification-badge" aria-hidden="true" hidden>1</span>
+          </button>
+        </div>
+      </div>
+      <div id="search-panel" class="search-panel" hidden>
+        <form id="search-form" class="search-wrap" role="search">
+          <div class="search-field">
+            <label class="visually-hidden" for="search" data-i18n="searchLabel">သတင်းနှင့် အလုပ် ရှာရန်</label>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10.8" cy="10.8" r="7.2"/><path d="m16 16 4.5 4.5" stroke-linecap="round"/></svg>
+            <input id="search" class="search" type="search" autocomplete="off" enterkeyhint="search" placeholder="သတင်း၊ အလုပ်အကိုင် ရှာမယ်…" aria-label="သတင်းနှင့် အလုပ် ရှာရန်" data-i18n-placeholder="searchPlaceholder" data-i18n-aria-label="searchLabel">
+            <button id="search-close" class="search-close" type="button" aria-label="Close search">×</button>
+          </div>
+          <button id="search-submit" class="search-submit" type="submit" aria-label="Search" data-i18n-aria-label="searchLabel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10.8" cy="10.8" r="7.2"/><path d="m16 16 4.5 4.5" stroke-linecap="round"/></svg>
+          </button>
+        </form>
+      </div>
+    </header>
+    <div id="drawer-backdrop" class="drawer-backdrop" hidden></div>
+    <aside id="app-drawer" class="app-drawer" aria-label="အဓိက မီနူး" data-i18n-aria-label="drawerLabel" aria-hidden="true" inert>
+      <div class="drawer-profile">
+        <button id="drawer-close" class="drawer-close" type="button" aria-label="Close menu" data-i18n-aria-label="closeMenuLabel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <div class="guest-avatar" aria-hidden="true"><img src="/images/mm-voice-logo.svg" alt=""></div>
+        <strong data-i18n="drawerWelcome">Welcome to MM VOICE</strong>
+        <span data-i18n="drawerGuestCopy">Browse freely — no account required.</span>
+      </div>
+      <nav class="drawer-menu" aria-label="မီနူး" data-i18n-aria-label="drawerNavigation">
+        <button id="drawer-install-app" class="drawer-item drawer-install-action" type="button" aria-label="Add MM VOICE to your Home Screen" aria-haspopup="dialog" data-i18n-aria-label="installApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0-4-4m4 4 4-4"/><path d="M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg><span data-i18n="installApp">ဖုန်းထဲသို့ ထည့်ရန်</span></button>
+        <section class="drawer-audio" aria-labelledby="drawer-audio-heading">
+          <h2 id="drawer-audio-heading" data-i18n="listenAudioHeading">Listen to today’s news</h2>
+          <button id="drawer-audio-myanmar" class="drawer-audio-action" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4Zm12-2a6 6 0 0 1 0 8m2-11a10 10 0 0 1 0 14"/></svg><span data-i18n="listenBurmaToday">Listen to today’s Burma news</span></button>
+          <button id="drawer-audio-global" class="drawer-audio-action" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span data-i18n="listenGlobalToday">Listen to today’s Global news</span></button>
+        </section>
+        <details class="drawer-group">
+          <summary class="drawer-item"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.7a8 8 0 0 1-1.5.9L16 20.5h-3l-.3-1.7a8 8 0 0 1-1.5-.9l-1.7.7-1.4-2.4 1.4-1.1A7 7 0 0 1 9.5 13L8 11.8l1.4-2.4 1.7.7a8 8 0 0 1 1.5-.9L13 7.5h3l.3 1.7a8 8 0 0 1 1.5.9l1.7-.7 1.4 2.4-1.4 1.1a7 7 0 0 1-.1 2.1z" transform="translate(-1 -2)"/></svg><span data-i18n="settingsMenu">ဆက်တင်များ</span><span class="drawer-chevron" aria-hidden="true">⌄</span></summary>
+          <div class="drawer-submenu">
+            <button id="drawer-open-settings" class="drawer-sub-action" type="button" data-i18n="openSettings">ဆက်တင်များကို ကြည့်ရန်</button>
+            <div class="drawer-language"><span data-i18n="languageTitle">ဘာသာစကား</span><div class="language-switch" role="group" aria-label="Language"><button class="language-option" type="button" data-language="my" aria-pressed="true">မြန်မာ 🇲🇲</button><button class="language-option" type="button" data-language="en" aria-pressed="false">English 🇺🇸</button></div></div>
+            <div class="drawer-theme"><span><strong data-i18n="themeTitle">လင်း/မှောင်စနစ်</strong><small data-i18n="themeHelp">သင့်မျက်နှာပြင်အတွက် အလင်း သို့မဟုတ် အမှောင် ရွေးပါ</small></span><button id="drawer-theme-toggle" class="switch-control" type="button" role="switch" aria-checked="false" aria-label="လင်း/မှောင်စနစ်" data-i18n-aria-label="themeTitle"><span class="switch-knob"></span></button></div>
+            <button id="drawer-notification-settings" class="drawer-sub-action" type="button" data-i18n="notificationSettings">အသိပေးချက်များ</button>
+          </div>
+        </details>
+        <button id="drawer-publishers" class="drawer-item" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v16H5.5A1.5 1.5 0 0 0 4 20.5z"/><path d="M4 6h16M8 10h8m-8 3h8"/></svg><span data-i18n="publishersMenu">သတင်းဌာနများ</span></button>
+        <button id="drawer-saved" class="drawer-item" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-3.5L6 21z"/></svg><span data-i18n="savedPosts">သိမ်းထားသော ပို့စ်များ</span></button>
+        <button id="drawer-about" class="drawer-item" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><span data-i18n="aboutThaiBro">MM VOICE အကြောင်း</span></button>
+      </nav>
+      <p class="drawer-footer">MM VOICE · <span data-i18n="communityTagline">ယုံကြည်စိတ်ချရသော သတင်းရင်းမြစ်များ</span></p>
+    </aside>
+
+    <main id="top" class="main-surface">
+      <section id="home-view" class="feed-view">
+        <div class="feed-head social-feed-head">
+          <div><h1 data-i18n="homeHeading">မြန်မာနဲ့ သက်ဆိုင်တဲ့ နောက်ဆုံးသတင်းများ</h1></div>
+        </div>
+        <div id="home-list" class="story-list social-feed" aria-live="polite" aria-busy="true"></div>
+        <p class="fine-print" data-i18n="sourceReminder">သတင်းတိုင်းအတွက် မူရင်းရင်းမြစ်ကို ဖွင့်ကြည့်နိုင်ပါတယ်။</p>
+      </section>
+
+      <section id="global-panel" class="feed-view global-feed-view" hidden aria-labelledby="global-heading">
+        <div class="feed-head">
+          <div><h1 id="global-heading" data-i18n="globalHeading">Global news</h1></div>
+          <div class="feed-tools"><span id="global-status" class="feed-status" aria-live="polite"><i class="status-dot"></i><span id="global-status-text">Loading…</span></span><button id="global-refresh" class="refresh" type="button" aria-label="Refresh global news" data-i18n-aria-label="refreshGlobalLabel">↻</button></div>
+        </div>
+        <div id="global-list" class="story-list social-feed" aria-live="polite" aria-busy="true"></div>
+        <p class="fine-print" data-i18n="sourceReminder">Open the original source for each news story.</p>
+      </section>
+
+      <section id="publishers-view" class="page-view publishers-view" hidden aria-labelledby="publishers-heading">
+        <div class="publisher-directory-heading">
+          <button id="publishers-back" class="back-button" type="button" aria-label="Back" data-i18n-aria-label="back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m0 0 6 6m-6-6 6-6"/></svg><span data-i18n="back">Back</span></button>
+          <p class="eyebrow" data-i18n="publishersEyebrow">NEWS SOURCES</p>
+          <h1 id="publishers-heading" data-i18n="publishersHeading">သတင်းဌာနများ</h1>
+          <p data-i18n="publishersIntro">Browse trusted publishers by region.</p>
+        </div>
+        <div class="publisher-directory-tabs" role="group" aria-label="Publisher region" data-i18n-aria-label="publisherRegionLabel">
+          <button class="publisher-directory-tab" type="button" data-publisher-region="myanmar" aria-pressed="true" data-i18n="burmaTab">Burma</button>
+          <button class="publisher-directory-tab" type="button" data-publisher-region="global" aria-pressed="false" data-i18n="globalTab">Global</button>
+        </div>
+        <div id="publishers-list" class="publisher-directory-list" aria-live="polite" aria-busy="true"></div>
+      </section>
+
+      <section id="news-panel" class="feed-view" role="tabpanel" aria-labelledby="news-heading" hidden>
+        <div id="personalized-news" class="personalized-slot"></div>
+        <div class="feed-head">
+          <div><h1 id="news-heading" data-i18n="latestNews">နောက်ဆုံးသတင်းများ</h1><p class="feed-caption" data-i18n="newsCaption">ယုံကြည်ရတဲ့ ရင်းမြစ်က သတင်းတွေကို အကိုက စုစည်းထားတယ်။ ၁၅ မိနစ်တစ်ကြိမ် အသစ်စစ်ဆေးသည်။</p></div>
+          <div class="feed-tools"><span id="feed-status" class="feed-status" aria-live="polite"><i class="status-dot"></i><span id="feed-status-text">သတင်းတင်နေတယ်…</span></span><button id="refresh" class="refresh" type="button" aria-label="Refresh news">↻</button></div>
+        </div>
+        <div id="news-list" class="story-list social-feed" aria-live="polite" aria-busy="true"></div>
+        <p class="fine-print" data-i18n="sourceReminder">သတင်းတိုင်းအတွက် မူရင်းရင်းမြစ်ကို ဖွင့်ကြည့်နိုင်ပါတယ်။</p>
+      </section>
+
+      <section id="jobs-panel" class="feed-view job-content" role="tabpanel" aria-labelledby="jobs-heading" hidden>
+        <div id="personalized-jobs" class="personalized-slot"></div>
+        <div class="feed-head">
+          <div><h1 id="jobs-heading" data-i18n="latestJobs">အလုပ်အကိုင်အသစ်များ</h1><p class="feed-caption" data-i18n="jobsCaption">လစာ၊ နေရာနဲ့ ဆက်သွယ်ရန်ကို မစခင် အရင်စစ်ပါ ညီ/ညီမ။</p></div>
+          <div class="feed-tools"><span id="jobs-status" class="feed-status" aria-live="polite"><i class="status-dot"></i><span id="jobs-status-text">အလုပ်တင်နေတယ်…</span></span><button id="jobs-refresh" class="refresh" type="button" aria-label="Refresh jobs">↻</button></div>
+        </div>
+        <div id="jobs-list" class="story-list social-feed" aria-live="polite" aria-busy="true"></div>
+        <aside class="job-safety"><div class="safety-icon">✓</div><div><strong data-i18n="jobSafetyTitle">အလုပ်လက်ခံမီ အကို့စကားလေး</strong><p data-i18n="jobSafetyBody">အလုပ်ရဖို့ ငွေကြိုမပေးပါနဲ့။ စာချုပ်၊ လစာ၊ နားရက်နဲ့ အလုပ်လုပ်ခွင့်ကို စစ်ပြီးမှ ဆုံးဖြတ်ပါ။</p></div></aside>
+      </section>
+
+      <section id="notifications-panel" class="feed-view notifications-view" hidden aria-labelledby="notifications-heading">
+        <div class="feed-head"><div><h1 id="notifications-heading" data-i18n="notificationsHeading">အသိပေးချက်များ</h1><p id="notifications-caption" class="feed-caption">မြန်မာ့သတင်းရင်းမြစ်များမှ အရေးကြီးသတင်းများကို ဒီမှာကြည့်ပါ။</p></div><button id="notifications-refresh" class="refresh" type="button" aria-label="Refresh notifications" data-i18n-aria-label="refreshLabel">↻</button></div>
+        <div id="notifications-list" class="notification-list" aria-live="polite" aria-busy="true"></div>
+        <div id="notifications-empty" class="empty-state notification-empty" role="status" hidden><div class="notification-empty-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg></div><strong data-i18n="noNotificationsTitle">အသိပေးချက် မရှိသေးပါ</strong><p id="notifications-empty-copy">မြန်မာ့သတင်းထဲမှ အရေးကြီးသတင်းများ ရှိလာပါက ဒီမှာပေါ်လာပါမယ်။</p></div>
+      </section>
+
+      <section id="profile-view" class="page-view profile-view" hidden>
+        <section id="publisher-profile" class="publisher-profile" hidden>
+          <div class="page-heading profile-top-heading publisher-profile-heading">
+            <button id="publisher-back" class="back-button" type="button" aria-label="နောက်သို့" data-i18n-aria-label="back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m0 0 6 6m-6-6 6-6"/></svg><span data-i18n="back">နောက်သို့</span></button>
+            <p class="eyebrow" data-i18n="publisherLabel">သတင်း Page</p>
+            <div class="publisher-profile-identity"><span id="publisher-avatar" class="publisher-profile-avatar" role="img" aria-label="News publisher"></span><div><h1 id="publisher-name"></h1><p id="publisher-intro" class="feed-caption"></p></div></div>
+            <div id="publisher-links" class="publisher-profile-links" aria-label="Publisher links" hidden></div>
+          </div>
+          <div class="feed-head publisher-stories-head"><h2 id="publisher-stories-heading" data-i18n="publisherNewsHeading">ဤဌာနမှ သတင်းများ</h2></div>
+          <div id="publisher-list" class="story-list social-feed" aria-live="polite" aria-busy="false"></div>
+        </section>
+        <div id="profile-settings">
+          <div class="page-heading profile-top-heading"><button id="profile-back" class="back-button" type="button" aria-label="နောက်သို့" data-i18n-aria-label="back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m0 0 6 6m-6-6 6-6"/></svg><span data-i18n="back">နောက်သို့</span></button><p class="eyebrow" data-i18n="menuLabel">MENU</p><h1 data-i18n="profileHeading">ကိုယ်ရေးနှင့် ဆက်တင်များ</h1><p data-i18n="profileIntro">ဘာသာစကား၊ အသွင်အပြင်နှင့် သိမ်းထားသောအကြောင်းအရာများကို စီမံပါ။</p></div>
+          <section class="settings-card">
+            <div class="settings-title"><span class="settings-icon">文</span><div><strong data-i18n="languageTitle">Language / ဘာသာစကား</strong><small data-i18n="languageHelp">အက်ပ်အင်တာဖေ့စ် ဘာသာစကားရွေးပါ</small></div></div>
+            <div class="language-switch" role="group" aria-label="Language">
+              <button class="language-option" type="button" data-language="my" aria-pressed="true">မြန်မာ 🇲🇲</button>
+              <button class="language-option" type="button" data-language="en" aria-pressed="false">English 🇺🇸</button>
+            </div>
+          </section>
+          <section class="settings-card theme-setting"><div class="settings-title"><span class="settings-icon theme-icon">◐</span><div><strong data-i18n="themeTitle">လင်း/မှောင်စနစ်</strong><small data-i18n="themeHelp">သင့်မျက်နှာပြင်အတွက် အလင်း သို့မဟုတ် အမှောင် ရွေးပါ</small></div></div><button id="theme-toggle" class="switch-control" type="button" role="switch" aria-checked="false" aria-label="လင်း/မှောင်စနစ်" data-i18n-aria-label="themeTitle"><span class="switch-knob"></span></button></section>
+          <button id="notification-settings" class="settings-row" type="button"><span class="settings-icon">♧</span><span class="settings-row-copy"><strong data-i18n="notificationSettings">အသိပေးချက်များ</strong><small data-i18n="notificationSettingsHelp">အသိပေးချက်လက်ခံမှုကို စီမံရန်</small></span><span class="settings-chevron">›</span></button>
+          <button id="saved-shortcut" class="settings-row" type="button"><span class="settings-icon">▱</span><span class="settings-row-copy"><strong data-i18n="savedPosts">သိမ်းထားသော ပို့စ်များ</strong><small data-i18n="savedHelp">သိမ်းထားသည့်အကြောင်းအရာများကို ပြန်ကြည့်ရန်</small></span><span class="settings-chevron">›</span></button>
+          <section class="profile-card" id="profile-preference-card"><div><span class="eyebrow" data-i18n="personalize">Personalize your feed</span><strong id="profile-summary">All topics</strong><p id="profile-preference-copy" data-i18n="profileStored">Your topic preference is saved only on this device.</p></div><button id="clear-profile" class="button-secondary" type="button" data-i18n="clearPreference" hidden>Show all topics</button></section>
+        </div>
+        <section id="saved-view" class="profile-saved" hidden><div class="saved-header"><div><button id="saved-back" class="back-button" type="button" aria-label="နောက်သို့" data-i18n-aria-label="back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m0 0 6 6m-6-6 6-6"/></svg><span data-i18n="back">နောက်သို့</span></button><p class="eyebrow" data-i18n="savedPosts">သိမ်းထားသော ပို့စ်များ</p><h2 data-i18n="savedHeading">သိမ်းထားတဲ့အကြောင်းအရာ</h2></div></div><p class="feed-caption" data-i18n="savedReadOnly">ဧည့်သည်အဖြစ် သိမ်းဆည်းမှုလုပ်ဆောင်ချက်ကို မဖွင့်ရသေးပါ။</p><div id="saved-list" class="story-list social-feed"></div></section>
+      </section>
+      <section id="about-view" class="page-view about-page" hidden aria-labelledby="about-title">
+        <div class="about-page-inner">
+          <header class="about-page-topbar">
+            <button id="about-back" class="about-back" type="button" aria-label="နောက်သို့" data-i18n-aria-label="back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m0 0 6 6m-6-6 6-6"/></svg><span data-i18n="back">နောက်သို့</span></button>
+          </header>
+          <article class="about-article">
+            <h1 id="about-title">MM Voice အကြောင်း (About MM Voice)</h1>
+            <div class="about-copy">
+              <p>MM Voice သည် သတင်းဌာနတစ်ခု မဟုတ်ပါ။ ပြည်တွင်းပြည်ပမှ မြန်မာ့သတင်းများကို ပြည်သူများ တစ်နေရာတည်းတွင် လွယ်ကူစွာ ဖတ်ရှုနိုင်ရန် စုစည်းတင်ဆက်ပေးထားသော အက်ပ် (App) တစ်ခုသာ ဖြစ်ပါသည်။</p>
+              <p>ဤအက်ပ်တွင် ပါဝင်သော သတင်းများသည် မူရင်းသတင်းဌာနများ၏ တင်ဆက်မှုများကို အချိန်တိုအတွင်း ဖတ်ရှုနိုင်ရန် အနှစ်ချုပ်ဖော်ပြပေးခြင်းနှင့် မူရင်းသတင်းစာမျက်နှာများထံသို့ တိုက်ရိုက်လမ်းညွှန် ချိတ်ဆက်ပေးခြင်းတို့ကိုသာ လုပ်ဆောင်ပေးပါသည်။ ကျွန်ုပ်တို့၏ အဓိကရည်ရွယ်ချက်မှာ ယုံကြည်စိတ်ချရသော သတင်းအချက်အလက်များကို ပြည်သူလူထုထံသို့ အချိန်နှင့်တစ်ပြေးညီ လွယ်ကူလျင်မြန်စွာ ရောက်ရှိစေရန် ကူညီချိတ်ဆက်ပေးသော ပေါင်းကူးတံတားတစ်စင်းအဖြစ် ရပ်တည်ရန် ဖြစ်ပါသည်။</p>
+              <p>MM Voice သည် မည်သည့်စီးပွားရေး အကျိုးအမြတ်ကိုမျှ ရယူထားခြင်းမရှိသော (Non-profit) အက်ပ်တစ်ခု ဖြစ်ပါသည်။ ထို့ကြောင့် အသုံးပြုသူများအနေဖြင့် ကြော်ငြာများ (Ads) ၏ အနှောင့်အယှက်ကင်းစွာဖြင့် သတင်းများကို လွတ်လပ်စွာ အခမဲ့ ဖတ်ရှုနိုင်မည် ဖြစ်ပါသည်။</p>
+              <p>အသုံးပြုသူ မိဘပြည်သူများအားလုံး စိတ်နှလုံးချမ်းမြေ့ကြပါစေခင်ဗျာ။</p>
+            </div>
+            <p class="about-creator">Created by @kanmaungnyo</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" id="primary-tabs" aria-label="အဓိက လမ်းညွှန်" data-i18n-aria-label="mainNavigation">
+      <button class="nav-button" type="button" data-view="home" aria-current="page" aria-label="Burma" data-i18n-aria-label="bottomHome"><svg class="myanmar-map-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.00,9.56 L7.36,9.72 L7.39,8.97 L7.90,8.72 L7.79,8.28 L8.03,7.92 L8.07,6.84 L8.88,7.08 L9.35,6.22 L9.40,5.71 L9.98,4.84 L9.94,4.24 L11.29,3.52 L12.04,3.71 L11.95,3.06 L12.32,2.87 L12.24,2.48 L12.85,2.40 L13.20,3.01 L13.66,3.26 L13.64,4.92 L12.66,5.79 L12.53,7.03 L13.63,6.86 L13.88,7.82 L14.54,8.02 L14.24,8.89 L15.46,9.47 L16.23,9.17 L16.26,9.60 L15.37,10.28 L15.15,10.66 L13.94,11.35 L13.21,11.40 L12.73,12.53 L12.29,12.72 L13.89,15.08 L13.50,15.99 L13.14,16.18 L14.09,17.54 L14.19,18.60 L14.60,19.56 L13.52,21.60 L13.42,20.83 L13.74,20.03 L13.39,19.41 L13.48,18.27 L13.05,17.73 L12.52,15.17 L12.07,14.30 L10.20,15.57 L8.97,15.23 L9.33,13.94 L9.11,12.96 L8.29,11.76 L8.42,11.38 L7.81,11.25 L7.07,10.40Z"/></svg><span data-i18n="bottomHome">Burma</span></button>
+      <button class="nav-button" type="button" data-view="global" aria-label="Global" data-i18n-aria-label="globalTab"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="icon-outline" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path class="icon-outline" d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/><path class="icon-filled" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 2.1c1.1 1.2 1.9 3.8 2 6.9h-4c.1-3.1.9-5.7 2-6.9ZM4.1 13h3.8c.2 2.7 1.1 5.1 2.4 6.6A8 8 0 0 1 4.1 13Zm3.8-2H4.1a8 8 0 0 1 6.2-6.6C9 5.9 8.1 8.3 7.9 11Zm6.1 8.6c1.3-1.5 2.2-3.9 2.4-6.6h3.8a8 8 0 0 1-6.2 6.6Zm2.4-8.6c-.2-2.7-1.1-5.1-2.4-6.6a8 8 0 0 1 6.2 6.6h-3.8Z"/></svg><span data-i18n="bottomNoti">Global</span></button>
+    </nav>
+
+    <section id="welcome-overlay" class="welcome-overlay" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
+      <div class="welcome-screen">
+        <header class="welcome-screen-header"><h1 id="welcome-title">MM VOICE</h1></header>
+        <div class="welcome-network" role="img" aria-label="A soundwave connected to Myanmar news publishers">
+          <svg class="welcome-network-lines" viewBox="0 0 360 280" preserveAspectRatio="none" aria-hidden="true">
+            <g><path d="M180 140 46 54M180 140 180 36M180 140 314 54M180 140 325 140M180 140 314 226M180 140 180 244M180 140 46 226M180 140 35 140"/><circle cx="46" cy="54" r="3"/><circle cx="180" cy="36" r="3"/><circle cx="314" cy="54" r="3"/><circle cx="325" cy="140" r="3"/><circle cx="314" cy="226" r="3"/><circle cx="180" cy="244" r="3"/><circle cx="46" cy="226" r="3"/><circle cx="35" cy="140" r="3"/></g>
+          </svg>
+          <span class="publisher-node publisher-node--1"><img src="/images/publishers/bbc-burmese-avatar.png" alt=""></span>
+          <span class="publisher-node publisher-node--2"><img src="/images/publishers/democratic-voice-of-burma.png" alt=""></span>
+          <span class="publisher-node publisher-node--3"><img src="/images/publishers/radio-free-asia.png" alt=""></span>
+          <span class="publisher-node publisher-node--4"><img src="/images/publishers/mpa-256.png" alt=""></span>
+          <span class="publisher-node publisher-node--5"><img src="/images/publishers/the-irrawaddy.png" alt=""></span>
+          <span class="publisher-node publisher-node--6"><img src="/images/publishers/voa-burmese.png" alt=""></span>
+          <span class="publisher-node publisher-node--7"><img src="/images/publishers/kachin-news-group.png" alt=""></span>
+          <span class="publisher-node publisher-node--8"><img src="/images/publishers/myaelatt-athan-256.png" alt=""></span>
+          <span class="welcome-soundwave" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="5" y="18" width="4" height="12" rx="2"/><rect x="13" y="11" width="4" height="26" rx="2"/><rect x="22" y="5" width="4" height="38" rx="2"/><rect x="31" y="12" width="4" height="24" rx="2"/><rect x="39" y="18" width="4" height="12" rx="2"/></svg></span>
+        </div>
+        <p class="welcome-description" lang="my">ဤ Website တွင် မည်သည့်ကြော်ညာမှမပါဘဲ ပြည်တွင်းပြည်ပသတင်းအစုံကို ဖတ်ရှုနိုင်ပါပြီ။</p>
+        <button id="welcome-start" class="welcome-start" type="button"><span>ဖတ်ရှုမည်</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+      </div>
+    </section>
+
+    <section id="detail-view" class="detail-overlay" role="dialog" aria-modal="true" aria-labelledby="detail-title" hidden>
+      <div class="detail-shell">
+        <div class="detail-topbar"><strong>MM VOICE · <span data-i18n="broGuide">သတင်းအနှစ်ချုပ်</span></strong><button id="detail-close" class="detail-close" type="button" aria-label="Close">×</button></div>
+        <img id="detail-cover" class="detail-cover" alt="">
+        <video id="detail-video" class="detail-cover detail-video" controls playsinline preload="none" hidden></video>
+        <iframe id="detail-video-embed" class="detail-cover detail-video-embed" title="သတင်းဗီဒီယို" loading="eager" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen hidden></iframe>
+        <div class="detail-panel">
+          <article class="detail-content"><div class="detail-label-row"><span id="detail-category" class="story-label"></span><span id="detail-verified" class="verified-badge" hidden>✓ MM VOICE စစ်ဆေးထားသည်</span></div><h1 id="detail-title" class="detail-title"></h1><div class="detail-meta"><time id="detail-date"></time><i class="meta-dot"></i><a id="detail-source" class="detail-source" href="#" target="_blank" rel="noopener noreferrer" hidden></a></div><div id="detail-warning" class="detail-warning" hidden>⚠ သတိပေးချက် · သတင်း၏ အရေးကြီးသော အချက်အလက်များကို မူရင်းရင်းမြစ်တွင် စစ်ဆေးပါ။</div><p id="detail-summary" class="detail-summary" hidden></p><div id="detail-contact" class="detail-contact"></div><div id="detail-body" class="detail-body"></div><p id="detail-source-attribution" class="detail-source-attribution" hidden></p><section id="detail-source-full" class="detail-source-full hidden"></section></article>
+          <div class="detail-actions"><button id="detail-like" class="detail-action" type="button" aria-pressed="false"><span class="action-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 8.8c0 5.2-8.8 10.1-8.8 10.1S3.2 14 3.2 8.8A4.4 4.4 0 0 1 12 7.1a4.4 4.4 0 0 1 8.8 1.7Z"/></svg></span><span data-i18n="like">Like</span><span id="like-count">0</span></button><button id="detail-comment" class="detail-action" type="button"><span class="action-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-8 7.5 9 9 0 0 1-4-.9L4 20l1.3-3.2A7 7 0 0 1 4 12c0-4.2 3.6-7.5 8-7.5s8 3.1 8 7Z"/></svg></span><span data-i18n="comment">Comment</span></button><button id="detail-bookmark" class="detail-action" type="button" aria-pressed="false"><span class="action-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-3.5L6 21z"/></svg></span><span data-i18n="save">Save</span></button></div>
+          <section class="detail-comments"><h2 id="detail-comments-heading" data-i18n="communityComments">Community comments</h2><p class="comments-helper" data-i18n="commentHelp">Comments are read-only for now.</p><ul id="comment-list" class="comment-list" aria-live="polite"></ul></section>
+        </div>
+      </div>
+    </section>
+
+  <dialog id="share-sheet" class="share-sheet" aria-labelledby="share-sheet-title">
+    <div class="share-sheet-inner">
+      <div class="share-sheet-grabber" aria-hidden="true"></div>
+      <div class="share-sheet-heading"><div><p class="share-sheet-eyebrow" data-i18n="shareEyebrow">SHARE STORY</p><h2 id="share-sheet-title" data-i18n="shareTitle">Share this story</h2></div><button id="share-sheet-close" class="share-sheet-close" type="button" aria-label="Close sharing menu" data-i18n-aria-label="shareCloseLabel">×</button></div>
+      <p id="share-story-title" class="share-story-title"></p>
+      <div class="share-option-list">
+        <button class="share-option" type="button" data-share-destination="facebook"><span class="share-option-icon facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.2V13h2.9v8z"/></svg></span><span data-i18n="shareFacebook">Facebook</span><span class="share-option-arrow" aria-hidden="true">›</span></button>
+        <button class="share-option" type="button" data-share-destination="messenger"><span class="share-option-icon messenger"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2c-5.1 0-9.2 3.8-9.2 8.5 0 2.7 1.4 5.1 3.6 6.7v3l3.2-1.8c.8.2 1.6.4 2.4.4 5.1 0 9.2-3.8 9.2-8.5S17.1 3.2 12 3.2Zm1 11.4-2.4-2.6-4.2 2.6 4.6-4.9 2.5 2.6 4.1-2.6z"/></svg></span><span data-i18n="shareMessenger">Messenger</span><span class="share-option-arrow" aria-hidden="true">›</span></button>
+        <button class="share-option" type="button" data-share-destination="telegram"><span class="share-option-icon telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 4-3.3 16-6.1-4.8-3.2 2.8.5-5.2L18 6.1 7 12.1l-4-1.4z"/></svg></span><span data-i18n="shareTelegram">Telegram</span><span class="share-option-arrow" aria-hidden="true">›</span></button>
+        <button class="share-option" type="button" data-share-destination="copy"><span class="share-option-icon copy-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 14.5 14.5 9.5m-7 8H6a4 4 0 0 1 0-8h3m6-3h3a4 4 0 0 1 0 8h-3"/></svg></span><span data-i18n="copyLink">Copy link</span><span class="share-option-arrow" aria-hidden="true">›</span></button>
+      </div>
+      <p id="share-status" class="share-status" role="status" aria-live="polite"></p>
+    </div>
+  </dialog>
+  <dialog id="install-guide" class="install-guide" aria-labelledby="install-guide-title">
+    <div class="install-guide-inner">
+      <header class="install-guide-header">
+        <div><p class="install-guide-eyebrow" data-i18n="installEyebrow">ADD TO HOME SCREEN</p><h2 id="install-guide-title" class="install-guide-title" data-i18n="installGuideTitle">Add MM VOICE to your Home Screen</h2></div>
+        <button id="install-guide-close" class="install-guide-close" type="button" aria-label="Close" data-i18n-aria-label="installGuideClose">×</button>
+      </header>
+      <p class="install-guide-intro" data-i18n="installGuideIntro">After adding it, launch MM VOICE from your phone’s Home Screen like an app.</p>
+      <ol class="install-guide-steps" data-install-steps="ios" hidden>
+        <li data-i18n="installIos1">Open MM VOICE in Safari.</li>
+        <li data-i18n="installIos2">Tap Share.</li>
+        <li data-i18n="installIos3">Choose Add to Home Screen. If it is missing, add it from Edit Actions.</li>
+        <li data-i18n="installIos4">Turn on Open as Web App, then tap Add.</li>
+      </ol>
+      <ol class="install-guide-steps" data-install-steps="android" hidden>
+        <li data-i18n="installAndroid1">Open MM VOICE in Chrome (not inside another app’s browser).</li>
+        <li data-i18n="installAndroid2">Tap the ⋮ menu in the top-right corner.</li>
+        <li data-i18n="installAndroid3">Choose Install app or Add to Home screen.</li>
+        <li data-i18n="installAndroid4">Confirm Add or Install.</li>
+      </ol>
+      <ol class="install-guide-steps" data-install-steps="other" hidden>
+        <li data-i18n="installOther1">Open your browser’s menu.</li>
+        <li data-i18n="installOther2">Choose Install app, Add to Home screen, or Create shortcut.</li>
+        <li data-i18n="installOther3">Confirm Add or Install.</li>
+      </ol>
+      <p class="install-guide-note" data-i18n="installGuideNote">If the option is missing, open MM VOICE in Safari or Chrome instead of an in-app browser.</p>
+    </div>
+  </dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+  </div>
+  <section id="audio-player" class="audio-player" role="region" aria-label="News audio player" data-i18n-aria-label="audioPlayerLabel" hidden>
+    <audio id="audio-element" preload="none" playsinline></audio>
+    <div class="audio-player-heading">
+      <span class="audio-player-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6l-5 4H4Zm12-2a6 6 0 0 1 0 8m2-11a10 10 0 0 1 0 14"/></svg></span>
+      <div class="audio-player-copy"><span id="audio-player-region" class="audio-player-region"></span><strong id="audio-player-title" aria-live="polite">MM VOICE</strong><span id="audio-player-status" role="status" aria-live="polite"></span></div>
+      <button id="audio-player-close" class="audio-icon-button" type="button" aria-label="Close audio player" data-i18n-aria-label="audioCloseLabel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div id="audio-player-controls" class="audio-player-controls">
+      <button id="audio-previous" class="audio-icon-button" type="button" aria-label="Previous story" data-i18n-aria-label="audioPreviousLabel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M19 6 8 12l11 6z"/></svg></button>
+      <button id="audio-play" class="audio-play-button" type="button" aria-label="Play news audio" data-i18n-aria-label="audioPlayLabel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg></button>
+      <div id="audio-quota-message" class="audio-quota-message" role="status" hidden>ဒီနေ့အတွက် အသံနဲ့နားထောင်မရတော့ပါ</div>
+      <button id="audio-next" class="audio-icon-button" type="button" aria-label="Next story" data-i18n-aria-label="audioNextLabel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M5 6l11 6-11 6z"/></svg></button>
+      <div class="audio-progress-wrap"><label class="visually-hidden" for="audio-progress" data-i18n="audioProgressLabel">Audio progress</label><input id="audio-progress" type="range" min="0" max="1000" value="0" step="1" disabled><div class="audio-time-row"><span id="audio-current-time">0:00</span><span id="audio-duration">0:00</span></div></div>
+    </div>
+    <div class="audio-volume-row"><button id="audio-mute" class="audio-icon-button" type="button" aria-label="Mute audio" data-i18n-aria-label="audioMuteLabel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4zm12-2a6 6 0 0 1 0 8"/></svg></button><label for="audio-volume" data-i18n="audioVolumeLabel">Volume</label><input id="audio-volume" type="range" min="0" max="100" value="100" step="1" aria-label="Volume" data-i18n-aria-label="audioVolumeLabel" aria-valuetext="100%"><span id="audio-volume-level" class="audio-volume-level">100%</span></div>
+  </section>
+  <div id="pull-indicator" class="pull-indicator" role="status" aria-live="polite" aria-busy="false" hidden><span class="refresh-spinner" aria-hidden="true"></span><span id="pull-indicator-text">လွှတ်လိုက်ရင် အသစ်ပြန်စစ်မယ်</span></div>
+  <script src="/app.js?v=20261016-welcome-network-r1" defer></script>
+</body>
+</html>

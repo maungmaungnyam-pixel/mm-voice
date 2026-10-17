@@ -1,0 +1,28 @@
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+
+# Local/deployment-specific Wrangler config (may contain account and D1 IDs)
+wrangler.toml
+
+# Wrangler state, dependencies, and generated output
+.wrangler/
+node_modules/
+dist/
+coverage/
+
+# Production verification artifacts may disclose live URLs, account/database IDs, or operational data
+/artifacts/
+/verification-*.md
+/verification-*.png
+/audio-player-quota-state.png
+/dark-mode-mm-voice-*.png
+/pwa-install-menu-final.png
+
+# OS/editor and logs
+.DS_Store
+*.log
+npm-debug.log*

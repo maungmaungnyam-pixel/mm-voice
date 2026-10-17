@@ -1,0 +1,53 @@
+#notification-toggle{position:relative}
+#notification-toggle svg{width:21px;height:21px}
+#global-panel .feed-head{padding-top:16px}
+.global-feed-note{display:flex;align-items:flex-start;gap:10px;margin:5px 0 14px;padding:11px 13px;border:1px solid #dce8ef;border-radius:14px;color:#456176;background:#f6fafc;font-size:11px;line-height:1.65}
+.global-feed-note svg{flex:0 0 18px;width:18px;height:18px;margin-top:1px;color:#28729b}
+.publisher-directory-heading{margin-bottom:16px}
+.publisher-directory-heading h1{margin:2px 0 4px;color:var(--ink);font-size:clamp(22px,5vw,29px);font-weight:800;line-height:1.4}
+.publisher-directory-heading p{margin:0;color:var(--muted);font-size:12px;line-height:1.75}
+.publisher-directory-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 14px;padding:5px;border:1px solid var(--line);border-radius:15px;background:#f6f8fa}
+.publisher-directory-tab{min-height:45px;padding:8px 12px;border:0;border-radius:11px;color:#52697c;background:transparent;font-size:13px;font-weight:800;cursor:pointer;transition:background .16s,color .16s,box-shadow .16s}
+.publisher-directory-tab[aria-pressed=true]{color:#fff;background:var(--navy);box-shadow:0 3px 9px #12324f25}
+.publisher-directory-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:2px 0 18px}
+.publisher-directory-card{display:flex;align-items:center;gap:11px;min-width:0;min-height:72px;padding:11px 12px;border:1px solid #e4eaf0;border-radius:14px;color:var(--ink);background:#fff;text-align:left;cursor:pointer;transition:border-color .16s,transform .16s,box-shadow .16s}
+.publisher-directory-card:hover{transform:translateY(-1px);border-color:#b8cfdd;box-shadow:0 5px 16px #12324f0d}
+.publisher-directory-initial{display:grid;place-items:center;flex:0 0 40px;width:40px;height:40px;border:1px solid #dce7ed;border-radius:50%;color:#fff;background:linear-gradient(145deg,#193756,#2d7187);font:800 12px/1 Inter,"Noto Sans Myanmar",sans-serif}
+.publisher-directory-copy{display:grid;gap:2px;min-width:0;flex:1}
+.publisher-directory-copy strong{font-size:11px;line-height:1.5;overflow-wrap:anywhere}
+.publisher-directory-copy small{color:#7c8b98;font:600 9px/1.4 Inter,"Noto Sans Myanmar",sans-serif;letter-spacing:.02em}
+.publisher-directory-arrow{flex:0 0 auto;color:#8394a0;font-size:18px}
+.publisher-profile-links{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 18px;padding:12px;border:1px solid #e4eaf0;border-radius:14px;background:#f8fafb}
+.publisher-profile-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:7px 13px;border:1px solid #dbe5eb;border-radius:999px;color:#264a62;background:#fff;font-size:11px;font-weight:800;text-decoration:none;transition:border-color .16s,background .16s}
+.publisher-profile-link:hover{border-color:#a9c8d8;background:#f1f8fb}
+.publisher-profile-link svg{width:17px;height:17px;flex:0 0 17px}
+.publisher-profile-link.facebook-link{color:#174f96}
+.publisher-stories-head{margin-top:4px}
+.publisher-directory-loading{min-height:130px}
+html[data-theme=dark] .global-feed-note{border-color:#2b3b54;color:#c0ccda;background:#18273c}
+html[data-theme=dark] .publisher-directory-tabs{border-color:#293950;background:#17243a}
+html[data-theme=dark] .publisher-directory-tab{color:#b7c3d1}
+html[data-theme=dark] .publisher-directory-tab[aria-pressed=true]{color:#fff;background:#315674}
+html[data-theme=dark] .publisher-directory-card{border-color:#293950;color:#e3eaf2;background:#152238}
+html[data-theme=dark] .publisher-directory-initial{border-color:#30415b}
+html[data-theme=dark] .publisher-profile-links{border-color:#293950;background:#17243a}
+html[data-theme=dark] .publisher-profile-link{border-color:#34445d;color:#d9e5ef;background:#1a2a41}
+html[data-theme=dark] .publisher-profile-link.facebook-link{color:#a9c9ff}
+@media(max-width:560px){
+  .publisher-directory-list{grid-template-columns:1fr;gap:7px}
+  .publisher-directory-card{min-height:62px;padding:9px 11px}
+  .publisher-directory-tabs{gap:5px}
+  .publisher-directory-tab{min-height:42px;font-size:12px}
+  .publisher-profile-links{gap:7px;padding:10px}
+  .publisher-profile-link{flex:1;min-width:130px}
+  .global-feed-note{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){.publisher-directory-tab,.publisher-directory-card,.publisher-profile-link{transition:none}}
+
+
+.publisher-directory-initial.has-logo{overflow:hidden;border-color:#e3e9f0;color:transparent;background:#fff;box-shadow:0 1px 5px #16274412}
+.publisher-directory-initial.has-logo img{display:block;width:100%;height:100%;padding:4px;border-radius:inherit;object-fit:contain;background:#fff}
+html[data-theme=dark] .publisher-directory-initial.has-logo{border-color:#34445d;background:#fff}
+.publisher-directory-initial.has-logo.logo-dark{border-color:#243654;background:#17243a}
+.publisher-directory-initial.has-logo.logo-dark img{background:transparent}
+.publisher-directory-initial.has-logo.logo-dark,html[data-theme=dark] .publisher-directory-initial.has-logo.logo-dark{border-color:#243654;background:#17243a}
